@@ -1,14 +1,13 @@
-var http = require("http");
+var express = require('express');
+var app = express();
 
-http.createServer(function (request, response) {
-  // Send HTTP header
-  // HTTP status 200-ok
-  // Content type text/plain
-  response.writeHead(200, {'Content-Type': 'text/plain'});
+app.get('/',  function (req, res) {
+  res.send('Hello peeps');
+})
 
-  // Send the response body
-  response.end('Hello peeps');
-}).listen(8080);
+var server = app.listen(8080, function() {
+  var host = server.address().address
+  var port = server.address().port
 
-// Console will print this message
-console.log("Server running at localhost:8080");
+  console.log('Example app listening at http://%s%s', host, port)
+})
